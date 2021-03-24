@@ -1,9 +1,18 @@
 import 'dotenv/config';
 import {HardhatUserConfig} from 'hardhat/types';
+
+import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-solhint';
+import '@nomiclabs/hardhat-waffle';
+
+import 'hardhat-abi-exporter';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
-//import 'hardhat-typechain';
+import 'hardhat-spdx-license-identifier';
+//import 'hardhat-typechain'
+import 'hardhat-watcher';
 import 'solidity-coverage';
+import {removeConsoleLog} from 'hardhat-preprocessor';
 
 let mnemonic = process.env.MNEMONIC;
 if (!mnemonic) {
@@ -20,8 +29,36 @@ const accounts = {
 };
 
 const config: HardhatUserConfig = {
+  paths: {
+    artifacts: 'artifacts',
+    cache: 'cache',
+    deploy: 'deploy',
+    deployments: 'deployments',
+    imports: 'imports',
+    sources: 'contracts',
+    tests: 'test',
+  },
   solidity: {
-    version: '0.7.6',
+    compilers: [
+      {
+        version: '0.5.16',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 999999,
+          },
+        },
+      },
+      {
+        version: '0.6.12',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
   },
   namedAccounts: {
     deployer: 0,
@@ -53,9 +90,6 @@ const config: HardhatUserConfig = {
       chainId: 1666600000,
       accounts: accounts.Mainnet,
     },
-  },
-  paths: {
-    sources: 'src',
   },
   external: {
     contracts: [

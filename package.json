@@ -18,10 +18,13 @@
   },
   "devDependencies": {
     "@ethereum-waffle/chai": "^3.2.2",
+    "@ethersproject/solidity": "^5.0.9",
     "@ethersproject/wallet": "^5.0.11",
-    "@nomiclabs/hardhat-ethers": "^2.0.1",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@openzeppelin/contracts": "^3.4.0",
+    "@nomiclabs/hardhat-etherscan": "^2.1.1",
+    "@nomiclabs/hardhat-solhint": "^2.0.0",
+    "@typechain/ethers-v5": "^5.0.0",
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.30",
@@ -35,8 +38,13 @@
     "ethers": "^5.0.31",
     "fs-extra": "^9.1.0",
     "hardhat": "^2.0.10",
+    "hardhat-abi-exporter": "^2.0.8",
     "hardhat-deploy": "^0.7.0-beta.45",
     "hardhat-deploy-ethers": "^0.3.0-beta.7",
+    "hardhat-typechain": "^0.3.5",
+    "hardhat-preprocessor": "^0.1.0",
+    "hardhat-spdx-license-identifier": "^2.0.0",
+    "hardhat-watcher": "^2.0.0",
     "mocha": "^8.3.0",
     "prettier": "^2.2.1",
     "prettier-plugin-solidity": "^1.0.0-beta.5",
@@ -46,11 +54,13 @@
     "solidity-coverage": "^0.7.15",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.5",
-    "@typechain/ethers-v5": "^5.0.0",
-    "hardhat-typechain": "^0.3.5",
     "ts-generator": "^0.1.1",
     "typechain": "^4.0.1",
-    "websocket": "1.0.33"
+    "websocket": "1.0.33",
+    "@exchange-one/core": "^1.0.0",
+    "@exchange-one/periphery": "^1.0.0",
+    "@exchange-one/default-token-list": "^1.0.0",
+    "@openzeppelin/contracts": "^3.1.0"
   },
   "scripts": {
     "postinstall": "node ./.setup.js",
@@ -79,9 +89,5 @@
     "mainnet:export": "hardhat --network mainnet export",
     "mainnet:run": "cross-env HARDHAT_NETWORK=mainnet ts-node --files",
     "hardhat": "hardhat"
-  },
-  "dependencies": {
-    "@exchange-one/core": "^1.0.0",
-    "@exchange-one/periphery": "^1.0.0"
   }
 }

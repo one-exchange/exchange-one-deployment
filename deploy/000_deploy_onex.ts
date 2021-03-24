@@ -3,14 +3,15 @@ import {DeployFunction} from 'hardhat-deploy/types';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {deployments, getNamedAccounts} = hre;
-  const {deploy} = deployments;
+  const {deploy, log} = deployments;
   const {deployer} = await getNamedAccounts();
-  const feeToSetter = deployer;
 
-  const factory = await deployments.getOrNull('UniswapV2Factory');
-  if (!factory) {
-    await deploy('UniswapV2Factory', {
-      args: [feeToSetter],
+  const [lockFrom, lockTo] = [23155440, 23155440];
+
+  const oneX = await deployments.getOrNull('OneX');
+  if (!oneX) {
+    await deploy('OneX', {
+      args: [lockFrom, lockTo],
       from: deployer,
       log: true,
     });
