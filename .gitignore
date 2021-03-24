@@ -1,6 +1,10 @@
-cache/
+abi/
 artifacts/
-typechain/
+cache/
+coverage/
+exports/
+node_modules/
+types/
 
 coverage*
 
