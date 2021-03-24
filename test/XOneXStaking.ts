@@ -8,7 +8,7 @@ chai.use(waffleChai);
 
 import {deployOneX} from './shared/deploy';
 
-describe('Pit', () => {
+describe('XOneXStaking', () => {
   let signers: SignerWithAddress[];
   let alice: SignerWithAddress;
   let bob: SignerWithAddress;
