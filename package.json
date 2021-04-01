@@ -1,17 +1,21 @@
 {
-  "name": "hardhat-starter-pack",
-  "private": true,
-  "version": "0.1.0",
-  "description": "Hardhat starter pack for Harmony",
-  "repository": "github:harmony-one/hardhat-starter-pack",
-  "author": "harmony-one",
+  "name": "@exchange-one/contracts",
+  "version": "1.0.0",
   "license": "MIT",
-  "keywords": [
-    "ethereum",
-    "smart-contracts",
-    "hardhat",
-    "hardhat-deploy",
-    "solidity"
+  "types": "./types/index.ts",
+  "description": "ExchangeOne contracts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/one-exchange/exchangeone-contracts.git"
+  },
+  "author": "",
+  "keywords": [],
+  "files": [
+    "abi",
+    "artifacts",
+    "contracts",
+    "exports",
+    "types"
   ],
   "resolutions": {
     "websocket": "1.0.33"

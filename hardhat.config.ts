@@ -9,7 +9,7 @@ import 'hardhat-abi-exporter';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import 'hardhat-spdx-license-identifier';
-//import 'hardhat-typechain'
+import 'hardhat-typechain';
 import 'hardhat-watcher';
 import 'solidity-coverage';
 import {removeConsoleLog} from 'hardhat-preprocessor';
@@ -29,6 +29,7 @@ const accounts = {
 };
 
 const config: HardhatUserConfig = {
+  defaultNetwork: 'hardhat',
   paths: {
     artifacts: 'artifacts',
     cache: 'cache',
@@ -37,6 +38,13 @@ const config: HardhatUserConfig = {
     imports: 'imports',
     sources: 'contracts',
     tests: 'test',
+  },
+  abiExporter: {
+    path: './abi',
+    clear: true,
+    flat: true,
+    // only: [],
+    // except: []
   },
   solidity: {
     compilers: [
@@ -97,6 +105,30 @@ const config: HardhatUserConfig = {
       {artifacts: 'node_modules/@exchange-one/periphery/build'},
     ],
     deployments: {},
+  },
+  mocha: {
+    timeout: 20000,
+  },
+  preprocess: {
+    eachLine: removeConsoleLog(
+      (bre) =>
+        bre.network.name !== 'hardhat' && bre.network.name !== 'localhost'
+    ),
+  },
+  typechain: {
+    outDir: 'types',
+    target: 'ethers-v5',
+  },
+  spdxLicenseIdentifier: {
+    overwrite: false,
+    runOnCompile: true,
+  },
+  watcher: {
+    compile: {
+      tasks: ['compile'],
+      files: ['./contracts'],
+      verbose: true,
+    },
   },
 };
 
