@@ -29,12 +29,12 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   log(`\nChanging the owner of OneX token to RewardsGenerator ...`);
   await execute(
-    'RewardsGenerator',
+    'OneX',
     {from: deployer, log: true},
     'transferOwnership',
     RewardsGenerator.address
   );
-  const newOwner = await read('RewardsGenerator', 'owner');
+  const newOwner = await read('OneX', 'owner');
   log(`The new owner of the OneX token is: ${newOwner}`);
 
   log(`\nConfiguring lock settings ...`);
@@ -117,4 +117,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const lpRewardsPercentage = await read('RewardsGenerator', 'PERCENT_FOR_LP');
   log(`\nPERCENT_FOR_LP has now been set to ${lpRewardsPercentage} ...`);
 };
+func.tags = ['RewardsGenerator'];
 export default func;

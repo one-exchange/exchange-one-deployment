@@ -21,6 +21,9 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         break;
     }
 
+    console.log(`wONE address: ${woneAddress}`);
+    console.log(`factory address: ${factory.address}`);
+
     await deploy('UniswapV2Router02', {
       args: [factory.address, woneAddress],
       from: deployer,
@@ -28,4 +31,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     });
   }
 };
+func.tags = ['Uniswap'];
 export default func;

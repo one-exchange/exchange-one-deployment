@@ -9,6 +9,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const factory = await deployments.get('UniswapV2Factory');
   const router = await deployments.get('UniswapV2Router02');
+  const onexToken = await deployments.get('OneX');
+  const rewardsGenerator = await deployments.get('RewardsGenerator');
+  const rewardsDistributor = await deployments.get('RewardsDistributor');
+  const xOnexStaking = await deployments.get('XOneXStaking');
 
   log('\nUniswap Core contracts:');
   log('--------------------');
@@ -22,6 +26,18 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   log('\nUniswap Periphery contracts:');
   log('--------------------');
   log(`UniswapV2Router02: ${router.address}`);
+  log('\n');
+
+  log('\nToken contracts:');
+  log('--------------------');
+  log(`OneX token: ${onexToken.address}`);
+  log('\n');
+
+  log('\nRewards contracts:');
+  log('--------------------');
+  log(`Rewards Generator: ${rewardsGenerator.address}`);
+  log(`Rewards Distributor: ${rewardsDistributor.address}`);
+  log(`xOnexStaking: ${xOnexStaking.address}`);
   log('\n');
 };
 export default func;

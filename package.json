@@ -86,6 +86,8 @@
     "localnet:run": "cross-env HARDHAT_NETWORK=localnet ts-node --files",
     "testnet:deploy": "hardhat --network testnet deploy",
     "testnet:deploy:reset": "hardhat --network testnet deploy --reset",
+    "testnet:deploy:uniswap": "hardhat --network testnet deploy --reset --tags Uniswap",
+    "testnet:deploy:rewards-generator": "hardhat --network testnet deploy --reset --tags RewardsGenerator",
     "testnet:export": "hardhat --network testnet export",
     "testnet:run": "cross-env HARDHAT_NETWORK=testnet ts-node --files",
     "mainnet:deploy": "hardhat --network mainnet deploy",

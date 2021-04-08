@@ -106,4 +106,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     `Total supply of OneX is now: ${ethers.utils.formatEther(totalSupply)}\n`
   );
 };
+func.tags = ['RewardsGenerator'];
 export default func;

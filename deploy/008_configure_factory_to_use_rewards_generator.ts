@@ -6,14 +6,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {execute, read, log} = deployments;
   const {deployer} = await getNamedAccounts();
 
-  const rewardsGenerator = await deployments.get('RewardsGenerator');
+  const rewardsDistributor = await deployments.get('RewardsDistributor');
 
-  log(`\nConfiguring UniswapV2Factory to use RewardsGenerator for feeTo ...`);
+  log(`\nConfiguring UniswapV2Factory to use RewardsDistributor for feeTo ...`);
   await execute(
     'UniswapV2Factory',
     {from: deployer, log: true},
     'setFeeTo',
-    rewardsGenerator.address
+    rewardsDistributor.address
   );
   const feeTo = await read('UniswapV2Factory', 'feeTo');
   log(`FeeTo address for UniswapV2Factory is now ${feeTo} ...`);

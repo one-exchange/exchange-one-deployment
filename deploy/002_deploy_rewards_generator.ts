@@ -10,7 +10,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   if (!rewardsGenerator) {
     const oneXToken = await deployments.get('OneX');
 
-    const rewardsPerBlock = 1;
+    const rewardsPerBlock = hre.ethers.BigNumber.from('1000000000000000000'); // 1 ONEx
     const rewardsStartBlock = 7500000;
     const weeklyBlockCount = 302400;
 
@@ -165,4 +165,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     });
   }
 };
+func.tags = ['RewardsGenerator'];
 export default func;

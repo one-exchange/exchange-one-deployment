@@ -1,17 +1,11 @@
 import 'dotenv/config';
 import {HardhatUserConfig} from 'hardhat/types';
 
-import '@nomiclabs/hardhat-etherscan';
-import '@nomiclabs/hardhat-solhint';
-import '@nomiclabs/hardhat-waffle';
-
 import 'hardhat-abi-exporter';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 import 'hardhat-spdx-license-identifier';
 import 'hardhat-typechain';
-import 'hardhat-watcher';
-import 'solidity-coverage';
 import {removeConsoleLog} from 'hardhat-preprocessor';
 
 let mnemonic = process.env.MNEMONIC;
@@ -49,15 +43,6 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
-        version: '0.5.16',
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 999999,
-          },
-        },
-      },
-      {
         version: '0.6.12',
         settings: {
           optimizer: {
@@ -70,6 +55,7 @@ const config: HardhatUserConfig = {
   },
   namedAccounts: {
     deployer: 0,
+    tester: 1,
   },
   networks: {
     coverage: {
@@ -89,7 +75,7 @@ const config: HardhatUserConfig = {
       accounts: accounts.Localnet,
     },
     testnet: {
-      url: 'https://api.s0.b.hmny.io',
+      url: 'http://207.244.236.4:9500',
       chainId: 1666700000,
       accounts: accounts.Testnet,
     },
@@ -123,13 +109,13 @@ const config: HardhatUserConfig = {
     overwrite: false,
     runOnCompile: true,
   },
-  watcher: {
+  /*watcher: {
     compile: {
       tasks: ['compile'],
       files: ['./contracts'],
       verbose: true,
     },
-  },
+  },*/
 };
 
 export default config;
